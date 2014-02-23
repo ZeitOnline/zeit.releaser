@@ -16,5 +16,8 @@ def copy_unstaged_sources(data):
 
 
 def copy_js_css(src, dest):
-    shutil.copytree('%s/%s/css' % (src, target), '%s/%s' % (src, target))
-    shutil.copytree('%s/%s/js' % (src, target), '%s/%s' % (src, target))
+    print 'copying %s/%s/css to %s/%s' % (src, target, dest, target)
+    shutil.copytree('%s/%s/css' % (src, target), '%s/%s' % (dest, target))
+
+    print 'copying %s/%s/js to %s/%s' % (src, target, dest, target)
+    shutil.copytree('%s/%s/js' % (src, target), '%s/%s' % (dest, target))

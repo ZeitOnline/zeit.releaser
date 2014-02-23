@@ -22,7 +22,7 @@ setup(
       ],
     entry_points={
         'zest.releaser.releaser.after_checkout': [
-                'action = zeit.releaser.aftercheckout:copy_js_css',
+                'action = zeit.releaser.aftercheckout:copy_unstaged_sources',
         ],
     },
     extras_require={
