@@ -4,10 +4,10 @@ Change log for zeit.releaser
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Improve MANIFEST.in
 
 
 0.1 (2014-02-23)
 ----------------
-
+- Custom handler to copy js and css after_checkout.
 - Basic setup with changelog, setup.py, module_structure.
