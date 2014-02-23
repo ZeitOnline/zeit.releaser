@@ -1,7 +1,7 @@
 Change log for zeit.releaser
 ============================
 
-0.1 (unreleased)
+0.1 (2014-02-23)
 ----------------
 
 - Basic setup with changelog, setup.py, module_structure.
