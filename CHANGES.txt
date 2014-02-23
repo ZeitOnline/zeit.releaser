@@ -1,0 +1,7 @@
+Change log for zeit.releaser
+============================
+
+0.1 (unreleased)
+----------------
+
+- Basic setup with changelog, setup.py, module_structure.
