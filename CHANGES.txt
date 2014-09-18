@@ -1,8 +1,8 @@
 Change log for zeit.releaser
 ============================
 
-0.4 (unreleased)
-----------------
+0.3.2 (2014-09-18)
+------------------
 
 - Need to delete tree before copying, because zeit.web.static is versioned.
 
