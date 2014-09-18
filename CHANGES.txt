@@ -1,8 +1,8 @@
 Change log for zeit.releaser
 ============================
 
-0.4 (unreleased)
-----------------
+0.3.1 (2014-09-18)
+------------------
 
 - Declare forgotten namespace in zeit.releaser
 
