@@ -4,7 +4,7 @@ Change log for zeit.releaser
 0.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Need to delete tree before copying, because zeit.web.static is versioned.
 
 
 0.3.1 (2014-09-18)
