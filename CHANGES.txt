@@ -1,8 +1,8 @@
 Change log for zeit.releaser
 ============================
 
-0.2.1 (unreleased)
-----------------
+0.2.1 (2014-09-18)
+------------------
 
 - Declare namespace
 
