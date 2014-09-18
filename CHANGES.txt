@@ -1,7 +1,7 @@
 Change log for zeit.releaser
 ============================
 
-0.3 (unreleased)
+0.3 (2014-09-18)
 ----------------
 
 - Change destination of static resources to zeit.web.static.
