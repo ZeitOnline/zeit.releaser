@@ -1,6 +1,12 @@
 Change log for zeit.releaser
 ============================
 
+0.5 (unreleased)
+----------------
+
+- Nothing changed yet.
+
+
 0.4 (2015-01-14)
 ----------------
 
