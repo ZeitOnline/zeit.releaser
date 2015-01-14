@@ -4,7 +4,7 @@ Change log for zeit.releaser
 0.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Move to new zeit.web namespace
 
 
 0.3.2 (2014-09-18)

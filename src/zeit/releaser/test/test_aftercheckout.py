@@ -23,7 +23,7 @@ def test_copy_unstaged_src_should_be_processed_for_frontend(monkeypatch):
         zeit.releaser.aftercheckout, 'copy_js_css', copy_js_css)
 
     data = {}
-    data['name'] = 'zeit.frontend'
+    data['name'] = 'zeit.web'
     data['workingdir'] = 'workingdir'
     data['tagdir'] = 'tagdir'
 
