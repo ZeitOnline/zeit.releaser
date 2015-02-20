@@ -11,7 +11,7 @@ long_description = (
 
 setup(
     name='zeit.releaser',
-    version='0.5',
+    version='0.6.dev0',
     long_description = long_description,
     author=u'Ron Drongowski',
     author_email='ron.drongowski@zeit.de',
