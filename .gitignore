@@ -2,6 +2,7 @@
 *.pyo
 *.egg-info
 .Python
+.tox/
 lib/
 include/
 bin/
