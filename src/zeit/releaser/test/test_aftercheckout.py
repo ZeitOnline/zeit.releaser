@@ -1,19 +1,44 @@
-import zeit.releaser.aftercheckout
-import zest.releaser.utils
 from mock import Mock
 from mock import patch
+import os.path
+import pytest
+import zeit.releaser.aftercheckout
+import zest.releaser.utils
 
 
-def test_copy_unstaged_src_should_only_be_processed_for_frontend(monkeypatch):
+@pytest.fixture
+def pypirc(monkeypatch, tmpdir):
+    def expanduser(path):
+        return path.replace('~', str(tmpdir))
+    monkeypatch.setattr(os.path, 'expanduser', expanduser)
+    return str(tmpdir / '.pypirc')
+
+
+def test_copy_unstaged_src_should_only_be_processed_for_configured_packages(
+        monkeypatch, pypirc):
     def ask(q):
         return True
+    monkeypatch.setattr(zest.releaser.utils, 'ask', ask)
+
     data = {}
     data['name'] = 'something'
-    monkeypatch.setattr(zest.releaser.utils, 'ask', ask)
+    data['workingdir'] = 'workingdir'
+    data['tagdir'] = 'tagdir'
     assert zeit.releaser.aftercheckout.copy_unstaged_sources(data) is None
 
+    with open(pypirc, 'w') as f:
+        f.write("""\
+[zeit.releaser]
+something = foo""")
 
-def test_copy_unstaged_src_should_be_processed_for_frontend(monkeypatch):
+    with patch.object(zeit.releaser.aftercheckout, 'copy_js_css') as copy:
+        zeit.releaser.aftercheckout.copy_unstaged_sources(data)
+        copy.assert_called_once_with(
+            'workingdir', 'tagdir', 'foo')
+
+
+def test_copy_unstaged_src_should_be_processed_for_frontend(
+        monkeypatch, pypirc):
     def ask(q):
         return True
     monkeypatch.setattr(zest.releaser.utils, 'ask', ask)
@@ -27,8 +52,8 @@ def test_copy_unstaged_src_should_be_processed_for_frontend(monkeypatch):
     data['workingdir'] = 'workingdir'
     data['tagdir'] = 'tagdir'
 
-    with patch.object(zeit.releaser.aftercheckout, 'copy_js_css') as mock_method:
-        mock_method.return_value = None
+    with patch.object(zeit.releaser.aftercheckout, 'copy_js_css') as copy:
+        copy.return_value = None
         zeit.releaser.aftercheckout.copy_unstaged_sources(data)
 
-    mock_method.assert_called_once_with('workingdir', 'tagdir')
+    copy.assert_called_once_with('workingdir', 'tagdir', 'src/zeit/web/static')

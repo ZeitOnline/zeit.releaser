@@ -4,7 +4,7 @@ Change log for zeit.releaser
 0.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Make packages to which we are applicable configurable.
 
 
 0.4 (2015-01-14)
