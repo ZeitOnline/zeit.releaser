@@ -1,6 +1,0 @@
-setuptools
-zest.releaser>=3.12
-
-[test]
-mock
-pytest
