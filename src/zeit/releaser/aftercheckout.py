@@ -1,7 +1,12 @@
-import ConfigParser
 import os.path
 import shutil
+import sys
 import zest.releaser.utils
+
+if sys.version_info < (3,):
+    from ConfigParser import ConfigParser
+else:
+    from configparser import ConfigParser
 
 
 def copy_unstaged_sources(data):
@@ -15,9 +20,9 @@ def copy_unstaged_sources(data):
 
 def copy_js_css(src, dest, target):
     if os.path.exists(target):
-        print 'deleting %s/%s' % (dest, target)
+        print('deleting %s/%s' % (dest, target))
         shutil.rmtree('%s/%s' % (dest, target))
-    print 'copying %s/%s to %s/%s' % (src, target, dest, target)
+    print('copying %s/%s to %s/%s' % (src, target, dest, target))
     shutil.copytree('%s/%s' % (src, target), '%s/%s' % (dest, target))
 
 
@@ -36,6 +41,6 @@ def select_target(package):
 
 
 def read_configuration(filename):
-    config = ConfigParser.ConfigParser()
+    config = ConfigParser()
     config.read(os.path.expanduser(filename))
     return config
