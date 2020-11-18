@@ -10,7 +10,7 @@ else:
 
 
 def copy_unstaged_sources(data):
-    target = select_target(data['name'])
+    target = select_target(data['workingdir'])
     if not target:
         return
     if not zest.releaser.utils.ask('Copy js and css to tag-checkout'):
@@ -26,18 +26,16 @@ def copy_js_css(src, dest, target):
     shutil.copytree('%s/%s' % (src, target), '%s/%s' % (dest, target))
 
 
-def select_target(package):
-    config = read_configuration('~/.pypirc')
+def select_target(workingdir):
+    config = read_configuration(os.path.join(workingdir, 'setup.cfg'))
     section = 'zeit.releaser'
+    key = 'directory'
     if section not in config.sections():
-        if package == 'zeit.web':
-            return 'src/zeit/web/static'
-        else:
-            return None
-    elif not config.has_option(section, package):
+        return None
+    elif not config.has_option(section, key):
         return None
     else:
-        return config.get(section, package)
+        return config.get(section, key)
 
 
 def read_configuration(filename):

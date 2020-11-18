@@ -4,7 +4,7 @@ Change log for zeit.releaser
 0.7.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Read configuration from local setup.cfg instead of ~/.pypirc
 
 
 0.6.0 (2019-01-15)
