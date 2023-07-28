@@ -1,6 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 from setuptools import setup, find_packages
 
 long_description = (
@@ -12,13 +9,13 @@ long_description = (
 setup(
     name='zeit.releaser',
     version='0.8.0.dev0',
-    long_description = long_description,
+    long_description=long_description,
     author=u'Ron Drongowski',
     author_email='ron.drongowski@zeit.de',
     install_requires=[
           'setuptools',
+          'tomli',
           'zest.releaser>=3.12',
-          # -*- Extra requirements: -*-
       ],
     entry_points={
         'zest.releaser.releaser.after_checkout': [

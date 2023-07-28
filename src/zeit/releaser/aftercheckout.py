@@ -1,12 +1,7 @@
 import os.path
 import shutil
-import sys
+import tomli
 import zest.releaser.utils
-
-if sys.version_info < (3,):
-    from ConfigParser import ConfigParser
-else:
-    from configparser import ConfigParser
 
 
 def copy_unstaged_sources(data):
@@ -27,18 +22,14 @@ def copy_js_css(src, dest, target):
 
 
 def select_target(workingdir):
-    config = read_configuration(os.path.join(workingdir, 'setup.cfg'))
-    section = 'zeit.releaser'
+    config = os.path.join(workingdir, 'pyproject.toml')
+    if not os.path.exists(config):
+        return None
+    with open(config, 'rb') as f:
+        config = tomli.load(f)
+    section = 'zeit-releaser'
     key = 'directory'
-    if section not in config.sections():
+    if section not in config.get('tool', {}):
         return None
-    elif not config.has_option(section, key):
-        return None
-    else:
-        return config.get(section, key)
-
-
-def read_configuration(filename):
-    config = ConfigParser()
-    config.read(os.path.expanduser(filename))
-    return config
+    section = config['tool'][section]
+    return section.get(key)
