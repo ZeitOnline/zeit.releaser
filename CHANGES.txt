@@ -1,7 +1,7 @@
 Change log for zeit.releaser
 ============================
 
-0.8.0 (unreleased)
+0.8.0 (2023-07-28)
 ------------------
 
 - Read configuration from pyproject.toml instead of setup.cfg
